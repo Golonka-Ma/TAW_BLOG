@@ -1,0 +1,14 @@
+<div class="cards-container">
+  <div  *ngFor="let item of items$ | filter:filterText; index as i">
+    <app-blog-item
+      [image]="item.image"
+      [text]="item.text"
+      [title]="item.title"
+      [id]="item.id"
+      [iterationID]="i+1">
+    </app-blog-item>
+  </div>
+</div>
+
+
+

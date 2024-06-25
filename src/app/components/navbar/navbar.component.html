@@ -1,0 +1,26 @@
+<nav class="navbar">
+  <ul class="left-menu">
+    <li>
+      <a href="#" [routerLink]="['/']"><i class="fas fa-home"></i> Strona domowa</a>
+    </li>
+    <li *ngIf="authService.isLoggedIn()">
+      <a href="#" [routerLink]="['/blog']"><i class="fas fa-blog"></i> Blog</a>
+    </li>
+    <li *ngIf="authService.isLoggedIn()">
+      <a href="#" [routerLink]="['/add']"><i class="fas fa-plus"></i> Dodaj posta</a>
+    </li>
+  </ul>
+  <ul class="bottom-menu" *ngIf="!authService.isLoggedIn()">
+    <li>
+      <a href="#" [routerLink]="['/login']"><i class="fas fa-sign-in-alt"></i> Zaloguj się</a>
+    </li>
+    <li>
+      <a href="#" [routerLink]="['/signup']"><i class="fas fa-user-plus"></i> Zarejestruj się</a>
+    </li>
+  </ul>
+  <ul class="bottom-menu" *ngIf="authService.isLoggedIn()">
+    <li>
+      <a href="#" (click)="signOut()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </li>
+  </ul>
+</nav>

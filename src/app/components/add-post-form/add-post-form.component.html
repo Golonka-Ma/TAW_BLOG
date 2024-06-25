@@ -1,0 +1,19 @@
+<div class="my-form-container">
+    <div class="container-title">Dodawanie nowego posta</div>
+    <form>
+        <div class="form-group">
+            <label for="title">Tytuł</label>
+            <input [(ngModel)]="formData.title" name="title" type="text" class="form-control" id="title" aria-describedby="titleHelp" placeholder="Your title goes here...">
+            <small id="titleHelp" class="form-text text-muted"></small>
+        </div>
+        <div class="form-group">
+            <label for="description">Opis</label>
+            <textarea [(ngModel)]="formData.text" name="text" class="form-control" id="description" placeholder="Tell us about your post..."></textarea>
+        </div>
+        <div class="form-group">
+            <label for="imageurl">Image URL</label>
+            <input [(ngModel)]="formData.image" name="image" type="url" class="form-control" id="imageurl" placeholder="Provide link for your image...">
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="sendData()">Zatwierdz</button>
+    </form>
+</div>
