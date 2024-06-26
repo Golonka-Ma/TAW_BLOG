@@ -9,6 +9,9 @@
     <li *ngIf="authService.isLoggedIn()">
       <a href="#" [routerLink]="['/add']"><i class="fas fa-plus"></i> Dodaj posta</a>
     </li>
+    <li *ngIf="authService.isLoggedIn()">
+      <a href="#" [routerLink]="['/account']"><i class="fas fa-cog"></i>Zarządzaj kontem</a>
+    </li>
   </ul>
   <ul class="bottom-menu" *ngIf="!authService.isLoggedIn()">
     <li>
