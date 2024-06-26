@@ -1,5 +1,5 @@
 <div class="cards-container">
-  <div  *ngFor="let item of items$ | filter:filterText; index as i">
+  <div  *ngFor="let item of items$ index as i">
     <app-blog-item
       [image]="item.image"
       [text]="item.text"
