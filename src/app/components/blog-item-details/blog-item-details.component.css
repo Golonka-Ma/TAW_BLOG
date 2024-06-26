@@ -21,12 +21,12 @@ body {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   animation: fadeIn 0.5s ease-in-out;
   position: relative;
-  padding-top: 60px; /* Added padding to accommodate the back button */
+  padding-top: 60px;
 }
 
 .back-button {
   position: absolute;
-  top: -30px; /* Adjusted positioning to be above the container title */
+  top: -30px;
   left: 10px;
   background-color: #4a90e2;
   color: #ffffff;
@@ -35,7 +35,7 @@ body {
   padding: 10px 20px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  z-index: 1; /* Ensure the button is above other elements */
+  z-index: 1;
 }
 
 .back-button:hover {
@@ -91,30 +91,4 @@ body {
 .btn-primary {
   background-color: #4a90e2;
   color: #ffffff;
-}
-
-.btn-primary:hover {
-  background-color: #357ab7;
-  transform: translateY(-2px);
-}
-
-.btn-danger {
-  background-color: #e74c3c;
-  color: #ffffff;
-}
-
-.btn-danger:hover {
-  background-color: #c0392b;
-  transform: translateY(-2px);
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }

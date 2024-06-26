@@ -1,0 +1,40 @@
+mat-form-field {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 0 10px;
+  }
+  
+  mat-dialog-content {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  mat-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px;
+  }
+  
+  button[mat-button] {
+    margin-left: 10px;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-left: 20px;
+    margin-bottom: 20px;
+  }
+  
+  @media (max-width: 600px) {
+    mat-dialog-content {
+      padding: 10px;
+    }
+  
+    h1 {
+      font-size: 1.2rem;
+    }
+  }
+  

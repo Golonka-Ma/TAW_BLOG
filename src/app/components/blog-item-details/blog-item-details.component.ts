@@ -2,11 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from "../../services/data.service";
 import { HttpClientModule } from "@angular/common/http";
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { EditPostDialogComponent } from './edit-post-dialog.component';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-blog-item-details',
   standalone: true,
-  imports: [HttpClientModule],
+  imports: [CommonModule, HttpClientModule, MatDialogModule, MatButtonModule, EditPostDialogComponent],
   providers: [DataService],
   templateUrl: './blog-item-details.component.html',
   styleUrls: ['./blog-item-details.component.css']
@@ -17,7 +21,12 @@ export class BlogItemDetailsComponent implements OnInit {
   public title: string = '';
   public id: string = '';
 
-  constructor(private service: DataService, private route: ActivatedRoute, private router: Router) { }
+  constructor(
+    private service: DataService,
+    private route: ActivatedRoute,
+    private router: Router,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -36,25 +45,27 @@ export class BlogItemDetailsComponent implements OnInit {
   }
 
   editPost() {
-    const updatedTitle = prompt('Enter new title:', this.title);
-    const updatedText = prompt('Enter new text:', this.text);
-    const updatedImage = prompt('Enter new image URL:', this.image);
+    const dialogRef = this.dialog.open(EditPostDialogComponent, {
+      width: '400px',
+      data: { title: this.title, text: this.text, image: this.image }
+    });
 
-    if (updatedTitle !== null && updatedText !== null && updatedImage !== null) {
-      const updatedData = { title: updatedTitle, text: updatedText, image: updatedImage };
-      this.service.updatePost(this.id, updatedData).subscribe(() => {
-        alert('Post updated');
-        this.title = updatedTitle; 
-        this.text = updatedText;
-        this.image = updatedImage; 
-      });
-    }
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        const updatedData = { title: result.title, text: result.text, image: result.image };
+        this.service.updatePost(this.id, updatedData).subscribe(() => {
+          alert('Post został zaktualizowany');
+          this.title = result.title;
+          this.text = result.text;
+          this.image = result.image;
+        });
+      }
+    });
   }
 
   deletePost() {
     if (confirm('Jesteś pewny że chesz usunąć tego posta?')) {
       this.service.deletePost(this.id).subscribe(() => {
-        alert('Post został usunięty');
         this.goBack();
       });
     }
