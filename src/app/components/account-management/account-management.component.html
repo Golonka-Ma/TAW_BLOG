@@ -1,0 +1,23 @@
+<div class="account-management">
+    <h2>Zarządzaj kontem</h2>
+    <form (ngSubmit)="updateDetails()">
+      <div class="form-group">
+        <label for="name">Nazwa</label>
+        <input type="text" [(ngModel)]="user.name" name="name" class="form-control" id="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" [(ngModel)]="user.email" name="email" class="form-control" id="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Aktualne hasło</label>
+        <input type="password" [(ngModel)]="user.password" name="password" class="form-control" id="password" required>
+      </div>
+      <div class="form-group">
+        <label for="newPassword">Nowe hasło</label>
+        <input type="password" [(ngModel)]="user.newPassword" name="newPassword" class="form-control" id="newPassword">
+      </div>
+      <button type="submit" class="btn btn-primary">Aktualizuj</button>
+    </form>
+  </div>
+  

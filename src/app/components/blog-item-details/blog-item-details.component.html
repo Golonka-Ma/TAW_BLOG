@@ -3,11 +3,11 @@
   <div class="container-title">Podgląd posta</div>
   <div class="container-content">
     <img [src]="image" alt="Post Image">
-    <p><strong>Opis:</strong></p>
-    <p>{{text}}</p>
+    <p><strong>Tytuł:</strong> {{title}}</p>
+    <p><strong>Opis:</strong> {{text}}</p>
     <div class="action-buttons">
-      <button class="btn btn-primary" (click)="editPost()">Edytuj</button>
-      <button class="btn btn-danger" (click)="deletePost()">Usuń</button>
+      <button mat-button (click)="editPost()">Edytuj</button>
+      <button mat-button (click)="deletePost()">Usuń</button>
     </div>
   </div>
 </div>
