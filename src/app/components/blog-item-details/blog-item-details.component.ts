@@ -14,24 +14,49 @@ import { HttpClientModule } from "@angular/common/http";
 export class BlogItemDetailsComponent implements OnInit {
   public image: string = '';
   public text: string = '';
+  public title: string = '';
+  public id: string = '';
 
   constructor(private service: DataService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    let id: string = '';
-    this.route.paramMap.subscribe((params: any) => {
-      id = params.get('id');
-    });
-
-    this.service.getById(id).subscribe((res: any) => {
-      console.log(res);
-      const post = res;
-      this.image = post['image'];
-      this.text = post['text'];
+    this.route.paramMap.subscribe(params => {
+      this.id = params.get('id') || '';
+      this.service.getById(this.id).subscribe((res: any) => {
+        const post = res;
+        this.image = post['image'];
+        this.text = post['text'];
+        this.title = post['title'];
+      });
     });
   }
 
   goBack() {
     this.router.navigate(['/blog']);
+  }
+
+  editPost() {
+    const updatedTitle = prompt('Enter new title:', this.title);
+    const updatedText = prompt('Enter new text:', this.text);
+    const updatedImage = prompt('Enter new image URL:', this.image);
+
+    if (updatedTitle !== null && updatedText !== null && updatedImage !== null) {
+      const updatedData = { title: updatedTitle, text: updatedText, image: updatedImage };
+      this.service.updatePost(this.id, updatedData).subscribe(() => {
+        alert('Post updated');
+        this.title = updatedTitle; 
+        this.text = updatedText;
+        this.image = updatedImage; 
+      });
+    }
+  }
+
+  deletePost() {
+    if (confirm('Jesteś pewny że chesz usunąć tego posta?')) {
+      this.service.deletePost(this.id).subscribe(() => {
+        alert('Post został usunięty');
+        this.goBack();
+      });
+    }
   }
 }
