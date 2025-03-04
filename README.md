@@ -19,7 +19,6 @@ Some key views (brief overview):
 4. **Add Post** – a form for providing an image URL, title, and content.  
 5. **Account Management** – editing user data (name, email, passwords).
 
-> **Note:** You can extend this project with additional features such as pagination, comments, or rating.
 
 ---
 
@@ -123,9 +122,9 @@ Below are example endpoints (often served at `http://localhost:3001/api`):
 ## Contact
 If you have any questions or suggestions, feel free to reach out or open an issue:
 
-- **Email**: `your.email@example.com`
-- **GitHub**: [YourRepo](https://github.com/YourRepo)
-- **LinkedIn**: [YourLinkedInProfile](https://linkedin.com/in/example)
+- **Email**: marcin.golonka21@gmail.com  
+- **GitHub**: [Angular Blog App with SSR](github.com/Golonka-Ma/Angular-Blog-App-with-SSR)  
+- **LinkedIn**: [Marcin Golonka](https://www.linkedin.com/in/marcin-golonka-4510a928b/) 
 
 Thank you for your interest in the **Angular Blog App with SSR**!  
 Any contributions or pull requests are highly appreciated.
